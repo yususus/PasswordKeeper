@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8824CBC62C555557007320EE /* component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8824CBC52C555557007320EE /* component.swift */; };
 		888AC08A2C048C8E001FCD49 /* Password_KeeperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888AC0892C048C8E001FCD49 /* Password_KeeperApp.swift */; };
 		888AC08C2C048C8E001FCD49 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888AC08B2C048C8E001FCD49 /* ContentView.swift */; };
 		888AC08E2C048C8F001FCD49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 888AC08D2C048C8F001FCD49 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8824CBC52C555557007320EE /* component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = component.swift; sourceTree = "<group>"; };
 		888AC0862C048C8E001FCD49 /* Password Keeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Password Keeper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		888AC0892C048C8E001FCD49 /* Password_KeeperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password_KeeperApp.swift; sourceTree = "<group>"; };
 		888AC08B2C048C8E001FCD49 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 				888AC08B2C048C8E001FCD49 /* ContentView.swift */,
 				888AC08D2C048C8F001FCD49 /* Assets.xcassets */,
 				888AC08F2C048C8F001FCD49 /* Preview Content */,
+				8824CBC52C555557007320EE /* component.swift */,
 			);
 			path = "Password Keeper";
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				888AC08C2C048C8E001FCD49 /* ContentView.swift in Sources */,
+				8824CBC62C555557007320EE /* component.swift in Sources */,
 				888AC08A2C048C8E001FCD49 /* Password_KeeperApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
