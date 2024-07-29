@@ -9,26 +9,48 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        NavigationView {
-            ScrollView{
-                ScrollView(.horizontal){
-                    HStack {
-                        Password(text: "Bank", image: "bank")
-                        Password(text: "Kasa", image: "password")
-                        Password(text: "Sosyal Medya", image: "social")
-                    }.padding()
+        VStack {
+            ScrollView {
+                VStack(alignment: .leading) {
+                    Text("Kayıtlı Şifreler")
+                        .font(.largeTitle).fontWeight(.bold)
+                        .padding([.top, .leading])
                     
-                }
-                
-                ScrollView(.vertical){
-                    VStack{
-                        
+                    ScrollView(.horizontal) {
+                        HStack {
+                            Password(text: "Bank", image: "bank")
+                            Password(text: "Kasa", image: "password")
+                            Password(text: "Sosyal Medya", image: "social")
+                        }.padding()
                     }
                 }
-            }.navigationTitle("Şifreler")
+                
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text("Notlar")
+                            .font(.largeTitle).fontWeight(.bold)
+                        .padding([.top, .leading])
+                        Spacer()
+                        Button(action: {}, label: {
+                            Image(systemName: "plus.app.fill").font(.title2)
+                                .foregroundStyle(Color.black)
+                        }).padding()
+                    }
+                    
+                    ScrollView(.vertical) {
+                        VStack {
+                            Notes(head: "Günlük")
+                            Notes(head: "Hakkında")
+                            Notes(head: "Geleceğe Dair")
+                            Notes(head: "Top Secret")
+                        }.padding()
+                    }
+                }
+            }
         }
     }
 }
+
 
 #Preview {
     ContentView()

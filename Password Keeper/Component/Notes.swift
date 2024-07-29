@@ -8,11 +8,25 @@
 import SwiftUI
 
 struct Notes: View {
+    var head: String
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            VStack(alignment: .leading) {
+                Text(head)
+                    .font(.title3)
+                    .fontWeight(.bold)
+                Spacer()
+            }
+            Spacer()
+            Image(systemName: "lock.circle.dotted").font(.title).foregroundStyle(Color.black)
+        }
+        .padding()
+        .frame(width: 350, height: 75)
+        .background(Color.green.opacity(0.4))
+        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
     }
 }
 
 #Preview {
-    Notes()
+    Notes(head: "Günlük")
 }
