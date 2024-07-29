@@ -10,12 +10,21 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationView {
-            VStack {
-                Text("bankalar")
-                Text("bankalar")
-                Text("bankalar")
-                Text("bankalar")
-                Text("bankalar")
+            ScrollView{
+                ScrollView(.horizontal){
+                    HStack {
+                        Password(text: "Bank", image: "bank")
+                        Password(text: "Kasa", image: "password")
+                        Password(text: "Sosyal Medya", image: "social")
+                    }.padding()
+                    
+                }
+                
+                ScrollView(.vertical){
+                    VStack{
+                        
+                    }
+                }
             }.navigationTitle("Şifreler")
         }
     }
