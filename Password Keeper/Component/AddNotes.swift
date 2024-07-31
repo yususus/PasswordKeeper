@@ -16,9 +16,9 @@ struct AddNotes: View {
                     TextField("Title", text: $text)
                         .font(.title)
                         .padding()
-                        .padding()
                     
                 }
+                
                 
                 Divider()
                     .frame(width: 350,height: 1)
@@ -28,14 +28,28 @@ struct AddNotes: View {
                         TextField("Placeholder", text: $text, axis: .vertical)
                             .padding()
                             .cornerRadius(15)
-                        .padding()
+                            .padding()
                     }
                 }
+            }
+        }
+        //sanki başka bir sayfadan gelmiş gibi davranır
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {
+                    // Butonun işlevi burada olacak
+                }, label: {
+                    Text("Save")
+                        .fontWeight(.bold)
+                })
             }
         }
     }
 }
 
 #Preview {
-    AddNotes()
+    //burada da başka bir sayfadan gelmiş gibi görmemizi sağlar
+    NavigationView {
+        AddNotes()
+    }
 }

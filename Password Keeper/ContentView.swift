@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
+        NavigationView {
             ScrollView {
                 VStack(alignment: .leading) {
                     Text("Kayıtlı Şifreler")
@@ -29,12 +29,13 @@ struct ContentView: View {
                     HStack {
                         Text("Notlar")
                             .font(.largeTitle).fontWeight(.bold)
-                        .padding([.top, .leading])
+                            .padding([.top, .leading])
                         Spacer()
-                        Button(action: {}, label: {
+                        
+                        NavigationLink(destination: AddNotes()) {
                             Image(systemName: "plus.app.fill").font(.title2)
                                 .foregroundStyle(Color.black)
-                        }).padding()
+                        }.padding()
                     }
                     
                     ScrollView(.vertical) {
