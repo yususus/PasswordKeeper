@@ -18,9 +18,12 @@ struct ContentView: View {
                     
                     ScrollView(.horizontal) {
                         HStack {
-                            Password(text: "Bank", image: "bank")
-                            Password(text: "Kasa", image: "password")
-                            Password(text: "Sosyal Medya", image: "social")
+                            NavigationLink(destination: AddPassword()) {
+                                Password(text: "Bank", image: "bank")
+                                Password(text: "Kasa", image: "password")
+                                Password(text: "Sosyal Medya", image: "social")
+                            }
+                            
                         }.padding()
                     }
                 }

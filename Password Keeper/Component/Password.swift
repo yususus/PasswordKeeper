@@ -13,7 +13,7 @@ struct Password: View {
     var body: some View {
         HStack {
             Image(image).aspectRatio(contentMode: .fit).foregroundStyle(Color.black)
-            Text(text)
+            Text(text).foregroundStyle(Color.black)
         }
         
         .frame(width: 150,height: 100)

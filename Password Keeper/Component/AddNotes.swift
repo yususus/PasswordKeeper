@@ -62,11 +62,13 @@ struct AddNotes: View {
                             .clipShape(.rect(cornerRadius: 10))
                             .fontWeight(.bold)
                     })
+                    
                 }
             }
             .navigationBarBackButtonHidden(true)
             .toolbarBackground(Color.brown.opacity(0.5), for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
+            
     }
 }
 
