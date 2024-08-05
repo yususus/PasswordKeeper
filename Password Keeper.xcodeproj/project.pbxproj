@@ -15,6 +15,7 @@
 		888AC08C2C048C8E001FCD49 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888AC08B2C048C8E001FCD49 /* ContentView.swift */; };
 		888AC08E2C048C8F001FCD49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 888AC08D2C048C8F001FCD49 /* Assets.xcassets */; };
 		888AC0912C048C8F001FCD49 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 888AC0902C048C8F001FCD49 /* Preview Assets.xcassets */; };
+		88F365042C614C1E00F17B1F /* PaaswordSaveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F365032C614C1E00F17B1F /* PaaswordSaveData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		888AC08B2C048C8E001FCD49 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		888AC08D2C048C8F001FCD49 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		888AC0902C048C8F001FCD49 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		88F365032C614C1E00F17B1F /* PaaswordSaveData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaaswordSaveData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 		888AC0882C048C8E001FCD49 /* Password Keeper */ = {
 			isa = PBXGroup;
 			children = (
+				88F365022C614C0400F17B1F /* DataManager */,
 				88606BF52C5820D800A600E3 /* Component */,
 				888AC0892C048C8E001FCD49 /* Password_KeeperApp.swift */,
 				888AC08B2C048C8E001FCD49 /* ContentView.swift */,
@@ -85,6 +88,14 @@
 				888AC0902C048C8F001FCD49 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		88F365022C614C0400F17B1F /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				88F365032C614C1E00F17B1F /* PaaswordSaveData.swift */,
+			);
+			path = DataManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,6 +171,7 @@
 				88411FC72C5AA52D00EEE5D4 /* AddNotes.swift in Sources */,
 				888AC08C2C048C8E001FCD49 /* ContentView.swift in Sources */,
 				886F7A992C5FFC6D008C6613 /* AddPassword.swift in Sources */,
+				88F365042C614C1E00F17B1F /* PaaswordSaveData.swift in Sources */,
 				8824CBC62C555557007320EE /* Password.swift in Sources */,
 				888AC08A2C048C8E001FCD49 /* Password_KeeperApp.swift in Sources */,
 				88606BF42C58208F00A600E3 /* Notes.swift in Sources */,
