@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8824CBC62C555557007320EE /* Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8824CBC52C555557007320EE /* Password.swift */; };
 		88411FC72C5AA52D00EEE5D4 /* AddNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88411FC62C5AA52D00EEE5D4 /* AddNotes.swift */; };
+		885434A92C63F0D50007DB90 /* NotesSaveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885434A82C63F0D50007DB90 /* NotesSaveData.swift */; };
+		885434AD2C6408DD0007DB90 /* NoteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885434AC2C6408DD0007DB90 /* NoteDetailView.swift */; };
 		88606BF42C58208F00A600E3 /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88606BF32C58208F00A600E3 /* Notes.swift */; };
 		886F7A992C5FFC6D008C6613 /* AddPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886F7A982C5FFC6D008C6613 /* AddPassword.swift */; };
 		888AC08A2C048C8E001FCD49 /* Password_KeeperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888AC0892C048C8E001FCD49 /* Password_KeeperApp.swift */; };
@@ -21,6 +23,8 @@
 /* Begin PBXFileReference section */
 		8824CBC52C555557007320EE /* Password.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password.swift; sourceTree = "<group>"; };
 		88411FC62C5AA52D00EEE5D4 /* AddNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNotes.swift; sourceTree = "<group>"; };
+		885434A82C63F0D50007DB90 /* NotesSaveData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesSaveData.swift; sourceTree = "<group>"; };
+		885434AC2C6408DD0007DB90 /* NoteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailView.swift; sourceTree = "<group>"; };
 		88606BF32C58208F00A600E3 /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
 		886F7A982C5FFC6D008C6613 /* AddPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPassword.swift; sourceTree = "<group>"; };
 		888AC0862C048C8E001FCD49 /* Password Keeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Password Keeper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +53,7 @@
 				88606BF32C58208F00A600E3 /* Notes.swift */,
 				88411FC62C5AA52D00EEE5D4 /* AddNotes.swift */,
 				886F7A982C5FFC6D008C6613 /* AddPassword.swift */,
+				885434AC2C6408DD0007DB90 /* NoteDetailView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -94,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				88F365032C614C1E00F17B1F /* PaaswordSaveData.swift */,
+				885434A82C63F0D50007DB90 /* NotesSaveData.swift */,
 			);
 			path = DataManager;
 			sourceTree = "<group>";
@@ -168,6 +174,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				885434AD2C6408DD0007DB90 /* NoteDetailView.swift in Sources */,
+				885434A92C63F0D50007DB90 /* NotesSaveData.swift in Sources */,
 				88411FC72C5AA52D00EEE5D4 /* AddNotes.swift in Sources */,
 				888AC08C2C048C8E001FCD49 /* ContentView.swift in Sources */,
 				886F7A992C5FFC6D008C6613 /* AddPassword.swift in Sources */,

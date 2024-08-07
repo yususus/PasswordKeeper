@@ -7,7 +7,7 @@
 
 import Foundation
 
-class UserDefaultsManager {
+class PasswordSaveData {
     private let itemsKey = "savedItems"
 
     func saveItem(name: String, password: String) {

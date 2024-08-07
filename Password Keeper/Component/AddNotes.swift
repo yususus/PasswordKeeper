@@ -11,6 +11,7 @@ struct AddNotes: View {
     @State var title: String = ""
     @State var noteText: String = ""
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    private let userDefaultsManager = NotesSaveData()
     
     var body: some View {
         VStack {
@@ -19,13 +20,12 @@ struct AddNotes: View {
                     TextField("Title", text: $title)
                         .font(.title)
                         .padding()
-                    
                 }
                 
-                
                 Divider()
-                    .frame(width: 350,height: 1)
+                    .frame(width: 350, height: 1)
                     .overlay(.black)
+                
                 VStack(alignment: .leading) {
                     VStack {
                         TextField("Placeholder", text: $noteText, axis: .vertical)
@@ -35,42 +35,47 @@ struct AddNotes: View {
                     }
                 }
             }
-        }.background(Color.brown.opacity(0.5))
-        
-        //sanki başka bir sayfadan gelmiş gibi davranır
-            .toolbar {
-                // Back butonunu özelleştirmek için
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        // Geri gitme aksiyonu
-                        self.presentationMode.wrappedValue.dismiss()
-                        
-                    }) {
-                        HStack {
-                            Image(systemName: "arrowshape.left.fill")
-                                .foregroundStyle(Color.black)// Geri butonu simgesi
-                        }
+        }
+        .background(Color.brown.opacity(0.5))
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }) {
+                    HStack {
+                        Image(systemName: "arrowshape.left.fill")
+                            .foregroundStyle(Color.black)
                     }
                 }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        // Butonun işlevi burada olacak
-                    }, label: {
-                        Text("Save").foregroundStyle(Color.white)
-                            .frame(width: 100,height: 30)
-                            .background(Color.brown.opacity(0.8))
-                            .clipShape(.rect(cornerRadius: 10))
-                            .fontWeight(.bold)
-                    })
-                    
-                }
             }
-            .navigationBarBackButtonHidden(true)
-            .toolbarBackground(Color.brown.opacity(0.5), for: .navigationBar)
-            .toolbarBackground(.visible, for: .navigationBar)
-            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {
+                    saveNote()
+                    self.presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    Text("Save")
+                        .foregroundStyle(Color.white)
+                        .frame(width: 100, height: 30)
+                        .background(Color.brown.opacity(0.8))
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .fontWeight(.bold)
+                })
+            }
+        }
+        .navigationBarBackButtonHidden(true)
+        .toolbarBackground(Color.brown.opacity(0.5), for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
     }
+    
+    private func saveNote() {
+            if !title.isEmpty && !noteText.isEmpty {
+                userDefaultsManager.saveNote(title: title, noteText: noteText)
+                print("Not kaydedildi: \(title)")
+            }
+        }
 }
+
+
 
 #Preview {
     //burada da başka bir sayfadan gelmiş gibi görmemizi sağlar

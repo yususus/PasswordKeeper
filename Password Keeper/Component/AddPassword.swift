@@ -13,7 +13,7 @@ struct AddPassword: View {
     @State private var inputValues: [Int: (String, String)] = [:]
     @State private var selectedItem: Int? = nil
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    private let userDefaultsManager = UserDefaultsManager()
+    private let userDefaultsManager = PasswordSaveData()
 
     var body: some View {
         VStack {

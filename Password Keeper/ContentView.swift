@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    private let notesSaveData = NotesSaveData()
+    @State private var notes: [String: String] = [:]
+    
     var body: some View {
         NavigationView {
             ScrollView {
@@ -20,13 +23,10 @@ struct ContentView: View {
                         HStack {
                             NavigationLink(destination: AddPassword()) {
                                 Password(text: "Bank", image: "bank")
-                                
                             }
-                            
                         }.padding()
                     }
                 }
-                
                 VStack(alignment: .leading) {
                     HStack {
                         Text("Notlar")
@@ -39,19 +39,33 @@ struct ContentView: View {
                                 .foregroundStyle(Color.black)
                         }.padding()
                     }
-                    
                     ScrollView(.vertical) {
                         VStack {
                             Notes(head: "Günlük")
                             Notes(head: "Hakkında")
-                            Notes(head: "Geleceğe Dair")
-                            Notes(head: "Top Secret")
+                        
                         }.padding()
+                    }
+                    List {
+                        ForEach(Array(notes.keys), id: \.self) { title in
+                            NavigationLink(destination: NoteDetailView(title: title)) {
+                                Notes(head: title)
+                            }
+                        }
                     }
                 }
             }
         }
+        .onAppear {
+            loadNotes()
+            print("not gösterildi")
+        }
     }
+    
+    private func loadNotes() {
+            notes = notesSaveData.fetchNotes()
+            print("Notlar yüklendi: \(notes)")
+        }
 }
 
 
