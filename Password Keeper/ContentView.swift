@@ -11,62 +11,72 @@ struct ContentView: View {
     private let notesSaveData = NotesSaveData()
     @State private var notes: [String: String] = [:]
     
+    
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack(alignment: .leading) {
-                    Text("Kayıtlı Şifreler")
+            VStack(alignment: .leading) {
+                Text("Kayıtlı Şifreler")
+                    .font(.largeTitle).fontWeight(.bold)
+                    .padding([.top, .leading])
+                
+                ScrollView(.horizontal) {
+                    HStack {
+                        NavigationLink(destination: AddPassword()) {
+                            Password(text: "Bank", image: "bank")
+                        }
+                    }.padding()
+                }
+                
+                HStack {
+                    Text("Notlar")
                         .font(.largeTitle).fontWeight(.bold)
                         .padding([.top, .leading])
+                    Spacer()
                     
-                    ScrollView(.horizontal) {
-                        HStack {
-                            NavigationLink(destination: AddPassword()) {
-                                Password(text: "Bank", image: "bank")
-                            }
-                        }.padding()
-                    }
+                    NavigationLink(destination: AddNotes()) {
+                        Image(systemName: "plus.app.fill").font(.title2)
+                            .foregroundStyle(Color.black)
+                    }.padding()
                 }
-                VStack(alignment: .leading) {
-                    HStack {
-                        Text("Notlar")
-                            .font(.largeTitle).fontWeight(.bold)
-                            .padding([.top, .leading])
-                        Spacer()
-                        
-                        NavigationLink(destination: AddNotes()) {
-                            Image(systemName: "plus.app.fill").font(.title2)
-                                .foregroundStyle(Color.black)
-                        }.padding()
-                    }
-                    ScrollView(.vertical) {
-                        VStack {
-                            Notes(head: "Günlük")
-                            Notes(head: "Hakkında")
-                        
-                        }.padding()
-                    }
-                    List {
-                        ForEach(Array(notes.keys), id: \.self) { title in
-                            NavigationLink(destination: NoteDetailView(title: title)) {
+                
+                List {
+                    ForEach(Array(notes.keys), id: \.self) { title in
+                        /* NavigationLink(destination: AddNotes(title: title) ) {
+                         Notes(head: title)
+                         }*/
+                        ZStack {
+                            NavigationLink(destination:
+                                            AddNotes(title: title)
+                            ) {
+                                EmptyView()
+                            }
+                                .opacity(0)
+                            
+                            HStack {
                                 Notes(head: title)
+                                
                             }
                         }
-                    }
+                    }.listRowBackground(Color.clear)
+                        .listRowSeparator(.hidden)
+                    
+                    
+                    
                 }
             }
         }
         .onAppear {
             loadNotes()
-            print("not gösterildi")
         }
+        
     }
     
     private func loadNotes() {
-            notes = notesSaveData.fetchNotes()
-            print("Notlar yüklendi: \(notes)")
-        }
+        notes = notesSaveData.fetchNotes()
+        print("Notlar yüklendi: \(notes)")
+    }
 }
+
 
 
 #Preview {

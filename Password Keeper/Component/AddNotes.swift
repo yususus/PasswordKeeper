@@ -12,7 +12,7 @@ struct AddNotes: View {
     @State var noteText: String = ""
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     private let userDefaultsManager = NotesSaveData()
-    
+
     var body: some View {
         VStack {
             ScrollView {
@@ -20,12 +20,13 @@ struct AddNotes: View {
                     TextField("Title", text: $title)
                         .font(.title)
                         .padding()
+                        .disabled(true) // Başlık düzenlenemez olacak şekilde ayarlandı
                 }
-                
+
                 Divider()
                     .frame(width: 350, height: 1)
                     .overlay(.black)
-                
+
                 VStack(alignment: .leading) {
                     VStack {
                         TextField("Placeholder", text: $noteText, axis: .vertical)
@@ -65,14 +66,23 @@ struct AddNotes: View {
         .navigationBarBackButtonHidden(true)
         .toolbarBackground(Color.brown.opacity(0.5), for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
-    }
-    
-    private func saveNote() {
-            if !title.isEmpty && !noteText.isEmpty {
-                userDefaultsManager.saveNote(title: title, noteText: noteText)
-                print("Not kaydedildi: \(title)")
-            }
+        .onAppear {
+            loadNote()
         }
+    }
+
+    private func saveNote() {
+        if !title.isEmpty && !noteText.isEmpty {
+            userDefaultsManager.saveNote(title: title, noteText: noteText)
+            print("Not kaydedildi: \(title)")
+        }
+    }
+
+    private func loadNote() {
+        if let savedNote = userDefaultsManager.getNoteContent(title: title) {
+            noteText = savedNote
+        }
+    }
 }
 
 

@@ -11,7 +11,7 @@ struct Notes: View {
     var head: String
     var body: some View {
         HStack {
-            VStack(alignment: .leading) {
+            VStack() {
                 Text(head)
                     .font(.title3)
                     .fontWeight(.bold)
@@ -22,8 +22,9 @@ struct Notes: View {
         }
         .padding()
         .frame(width: 350, height: 75)
-        .background(Color.green.opacity(0.4))
+        .background(Color.green.gradient.opacity(0.4))
         .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+        .shadow(radius: 3)
     }
 }
 

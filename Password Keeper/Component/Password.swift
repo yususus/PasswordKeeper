@@ -17,7 +17,8 @@ struct Password: View {
         }
         
         .frame(width: 150,height: 100)
-            .background(Color.blue.opacity(0.3)).clipShape(.rect(cornerRadius: 10))
+        .background(Color.blue.gradient.opacity(0.4)).clipShape(.rect(cornerRadius: 10))
+            .shadow(radius: 10)
     }
 }
 
