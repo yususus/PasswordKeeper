@@ -10,6 +10,7 @@ import SwiftUI
 struct AddNotes: View {
     @State var title: String = ""
     @State var noteText: String = ""
+    @Binding var reloadToggle: Bool // bu sayede not kaydedildikten sonra contentView'da güncellemiş olurum.
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     private let userDefaultsManager = NotesSaveData()
 
@@ -20,7 +21,7 @@ struct AddNotes: View {
                     TextField("Title", text: $title)
                         .font(.title)
                         .padding()
-                        .disabled(true) // Başlık düzenlenemez olacak şekilde ayarlandı
+                        
                 }
 
                 Divider()
@@ -37,7 +38,7 @@ struct AddNotes: View {
                 }
             }
         }
-        .background(Color.brown.opacity(0.5))
+        .background(Color.brown.gradient.opacity(0.3))
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(action: {
@@ -52,6 +53,7 @@ struct AddNotes: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
                     saveNote()
+                    reloadToggle.toggle() // kaydet ve güncelle tetiklemesi
                     self.presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Text("Save")
@@ -64,7 +66,7 @@ struct AddNotes: View {
             }
         }
         .navigationBarBackButtonHidden(true)
-        .toolbarBackground(Color.brown.opacity(0.5), for: .navigationBar)
+        .toolbarBackground(Color.brown.opacity(0.3), for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .onAppear {
             loadNote()
@@ -86,10 +88,11 @@ struct AddNotes: View {
 }
 
 
-
+/*
 #Preview {
     //burada da başka bir sayfadan gelmiş gibi görmemizi sağlar
     NavigationView {
         AddNotes()
     }
 }
+*/

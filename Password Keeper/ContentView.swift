@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     private let notesSaveData = NotesSaveData()
     @State private var notes: [String: String] = [:]
-    
+    @State private var reloadToggle: Bool = false  // addNote'da eklendiği bu sayfada otomatik güncelleme yapıyor
     
     var body: some View {
         NavigationView {
@@ -33,7 +33,7 @@ struct ContentView: View {
                         .padding([.top, .leading])
                     Spacer()
                     
-                    NavigationLink(destination: AddNotes()) {
+                    NavigationLink(destination: AddNotes(reloadToggle: $reloadToggle)) {
                         Image(systemName: "plus.app.fill").font(.title2)
                             .foregroundStyle(Color.black)
                     }.padding()
@@ -46,26 +46,28 @@ struct ContentView: View {
                          }*/
                         ZStack {
                             NavigationLink(destination:
-                                            AddNotes(title: title)
+                                            AddNotes(title: title, reloadToggle: $reloadToggle)
                             ) {
                                 EmptyView()
                             }
-                                .opacity(0)
+                            .opacity(0)
                             
                             HStack {
                                 Notes(head: title)
                                 
                             }
                         }
-                    }.listRowBackground(Color.clear)
+                    }.onDelete(perform: deleteNote)
+                        .listRowBackground(Color.clear)
                         .listRowSeparator(.hidden)
-                    
-                    
-                    
-                }
+                }.scrollContentBackground(.hidden)
+                    .background(Color.white)
             }
         }
         .onAppear {
+            loadNotes()
+        }
+        .onChange(of: reloadToggle) { //sayfa değiştiğinde tetikleme işlemi
             loadNotes()
         }
         
@@ -74,6 +76,13 @@ struct ContentView: View {
     private func loadNotes() {
         notes = notesSaveData.fetchNotes()
         print("Notlar yüklendi: \(notes)")
+    }
+    private func deleteNote(at offsets: IndexSet) {
+        offsets.forEach { index in
+            let title = Array(notes.keys)[index]
+            notesSaveData.deleteNote(title: title)
+        }
+        loadNotes() //not sildikten sonra güncellemek için
     }
 }
 
