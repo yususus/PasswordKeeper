@@ -25,6 +25,7 @@ struct Notes: View {
         .background(Color.green.gradient.opacity(0.4))
         .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
         .shadow(radius: 3)
+        .padding()
     }
 }
 

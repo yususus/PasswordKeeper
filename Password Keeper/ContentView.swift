@@ -41,28 +41,29 @@ struct ContentView: View {
                 
                 List {
                     ForEach(Array(notes.keys), id: \.self) { title in
-                        /* NavigationLink(destination: AddNotes(title: title) ) {
+                        /* NavigationLink(destination: AddNotes(title: title, reloadToggle: $reloadToggle) ) {
                          Notes(head: title)
                          }*/
+                        
                         ZStack {
                             NavigationLink(destination:
-                                            AddNotes(title: title, reloadToggle: $reloadToggle)
+                               AddNotes(title: title, reloadToggle: $reloadToggle)
                             ) {
                                 EmptyView()
+                                    
                             }
                             .opacity(0)
-                            
-                            HStack {
+
                                 Notes(head: title)
-                                
-                            }
+                                .frame(height: 60)
                         }
                     }.onDelete(perform: deleteNote)
                         .listRowBackground(Color.clear)
                         .listRowSeparator(.hidden)
                 }.scrollContentBackground(.hidden)
-                    .background(Color.white)
-            }
+                
+                    
+            }.background(Color.yellow.opacity(0.1).gradient)
         }
         .onAppear {
             loadNotes()

@@ -29,8 +29,8 @@ struct AddPassword: View {
                         ))
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.bottom, 5)
-            // secure field yapılmalı 
-                        TextField("Password", text: Binding(
+                        
+                        SecureField("Password", text: Binding(
                             get: { inputValues[index]?.1 ?? "" },
                             set: { inputValues[index]?.1 = $0 }
                         ))
@@ -95,8 +95,8 @@ struct AddPassword: View {
         guard let selectedItem = selectedItem else { return }
         if let name = inputValues[selectedItem]?.0, !name.isEmpty,
            let password = inputValues[selectedItem]?.1, !password.isEmpty {
-            userDefaultsManager.saveItem(name: name, password: password)
-            items[selectedItem] = name // Öğenin adını güncelle
+            userDefaultsManager.updateItem(oldName: items[selectedItem], newName: name, password: password)
+            items[selectedItem] = name // Update the item name
         }
     }
 
@@ -104,11 +104,11 @@ struct AddPassword: View {
         let savedItems = userDefaultsManager.fetchItems()
         for (name, password) in savedItems {
             items.append(name)
-            inputValues[items.count - 1] = (name, password) // Şifreyi de ekle
+            inputValues[items.count - 1] = (name, password)
         }
     }
-
 }
+
 
 
 #Preview {

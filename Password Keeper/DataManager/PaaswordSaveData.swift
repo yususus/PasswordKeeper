@@ -16,6 +16,13 @@ class PasswordSaveData {
         UserDefaults.standard.set(items, forKey: itemsKey)
     }
 
+    func updateItem(oldName: String, newName: String, password: String) {
+        var items = fetchItems()
+        items.removeValue(forKey: oldName)
+        items[newName] = password
+        UserDefaults.standard.set(items, forKey: itemsKey)
+    }
+
     func fetchItems() -> [String: String] {
         return UserDefaults.standard.dictionary(forKey: itemsKey) as? [String: String] ?? [:]
     }
