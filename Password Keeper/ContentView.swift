@@ -24,6 +24,15 @@ struct ContentView: View {
                         NavigationLink(destination: AddPassword()) {
                             Password(text: "Bank", image: "bank")
                         }
+                        
+                        
+                        NavigationLink(destination: CardDetailsView()) {
+                            Text("Kredi Kartı Bilgilerini Görüntüle")
+                                .foregroundColor(.white)
+                                .padding()
+                                .background(Color.green)
+                                .cornerRadius(10)
+                        }
                     }.padding()
                 }
                 
@@ -47,14 +56,14 @@ struct ContentView: View {
                         
                         ZStack {
                             NavigationLink(destination:
-                               AddNotes(title: title, reloadToggle: $reloadToggle)
+                                            AddNotes(title: title, reloadToggle: $reloadToggle)
                             ) {
                                 EmptyView()
-                                    
+                                
                             }
                             .opacity(0)
-
-                                Notes(head: title)
+                            
+                            Notes(head: title)
                                 .frame(height: 60)
                         }
                     }.onDelete(perform: deleteNote)
@@ -62,7 +71,7 @@ struct ContentView: View {
                         .listRowSeparator(.hidden)
                 }.scrollContentBackground(.hidden)
                 
-                    
+                
             }.background(Color.yellow.opacity(0.1).gradient)
         }
         .onAppear {
