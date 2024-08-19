@@ -20,6 +20,8 @@
 		888AC08C2C048C8E001FCD49 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888AC08B2C048C8E001FCD49 /* ContentView.swift */; };
 		888AC08E2C048C8F001FCD49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 888AC08D2C048C8F001FCD49 /* Assets.xcassets */; };
 		88982E6E2C7279E5004D7941 /* SaveCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88982E6D2C7279E5004D7941 /* SaveCardView.swift */; };
+		88CA43352C73D03400B1E37E /* CardBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CA43342C73D03400B1E37E /* CardBackView.swift */; };
+		88CA43372C73D0AA00B1E37E /* CardFrontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CA43362C73D0AA00B1E37E /* CardFrontView.swift */; };
 		88F365042C614C1E00F17B1F /* PaaswordSaveData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F365032C614C1E00F17B1F /* PaaswordSaveData.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +40,8 @@
 		888AC08B2C048C8E001FCD49 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		888AC08D2C048C8F001FCD49 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		88982E6D2C7279E5004D7941 /* SaveCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCardView.swift; sourceTree = "<group>"; };
+		88CA43342C73D03400B1E37E /* CardBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBackView.swift; sourceTree = "<group>"; };
+		88CA43362C73D0AA00B1E37E /* CardFrontView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFrontView.swift; sourceTree = "<group>"; };
 		88F365032C614C1E00F17B1F /* PaaswordSaveData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaaswordSaveData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,6 +112,8 @@
 			children = (
 				881304742C71327B00BA0938 /* CardDetailsView.swift */,
 				88982E6D2C7279E5004D7941 /* SaveCardView.swift */,
+				88CA43342C73D03400B1E37E /* CardBackView.swift */,
+				88CA43362C73D0AA00B1E37E /* CardFrontView.swift */,
 			);
 			path = Bank;
 			sourceTree = "<group>";
@@ -192,6 +198,7 @@
 			files = (
 				885434A92C63F0D50007DB90 /* NotesSaveData.swift in Sources */,
 				881304752C71327B00BA0938 /* CardDetailsView.swift in Sources */,
+				88CA43372C73D0AA00B1E37E /* CardFrontView.swift in Sources */,
 				88411FC72C5AA52D00EEE5D4 /* AddNotes.swift in Sources */,
 				888AC08C2C048C8E001FCD49 /* ContentView.swift in Sources */,
 				881304792C7133B000BA0938 /* PersonalID.swift in Sources */,
@@ -201,6 +208,7 @@
 				888AC08A2C048C8E001FCD49 /* Password_KeeperApp.swift in Sources */,
 				88606BF42C58208F00A600E3 /* Notes.swift in Sources */,
 				88982E6E2C7279E5004D7941 /* SaveCardView.swift in Sources */,
+				88CA43352C73D03400B1E37E /* CardBackView.swift in Sources */,
 				8813047B2C7133D000BA0938 /* Subs.swift in Sources */,
 				881304772C71329200BA0938 /* SocialMedia.swift in Sources */,
 			);

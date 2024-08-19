@@ -12,52 +12,51 @@ struct CardDetailsView: View {
     @AppStorage("savedCardNumber") private var savedCardNumber: String = ""
     @AppStorage("savedExpirationDate") private var savedExpirationDate: String = ""
     @AppStorage("savedCVV2") private var savedCVV2: String = ""
+    @AppStorage("savedCardName") private var savedCardName: String = ""
+    
+    
+    @State private var isFlipped: Bool = false
     
     var body: some View {
         VStack(spacing: 20) {
             NavigationLink(destination: SaveCardView()) {
-                                Text("Kredi Kartı Bilgilerini Kaydet")
-                                    .foregroundColor(.white)
-                                    .padding()
-                                    .background(Color.blue)
-                                    .cornerRadius(10)
-                            }
-            if savedIBAN.isEmpty {
-                Text("Henüz kredi kartı bilgisi kaydedilmedi.")
-                    .font(.headline)
+                Text("Kredi Kartı Bilgilerini Kaydet")
+                    .foregroundColor(.white)
                     .padding()
-            } else {
-                VStack(spacing: 15) {
-                    cardDetailView(title: "IBAN", value: savedIBAN)
-                    cardDetailView(title: "Kart Numarası", value: savedCardNumber)
-                    cardDetailView(title: "Son Kullanma Tarihi", value: savedExpirationDate)
-                    cardDetailView(title: "CVV2", value: savedCVV2)
-                }
-                .padding()
-                .background(Color.gray.opacity(0.2))
-                .cornerRadius(10)
+                    .background(Color.blue)
+                    .cornerRadius(10)
             }
+            
+            ZStack {
+                if isFlipped {
+                    CardBackView(cvv2: savedCVV2)
+                        .rotation3DEffect(
+                            .degrees(180),
+                            axis: (x: 0, y: 1, z: 0)
+                        )
+                } else {
+                    CardFrontView(cardNumber: savedCardNumber, expirationDate: savedExpirationDate, iban: savedIBAN, cardName: savedCardName)
+                }
+            }
+            
+            .rotation3DEffect(
+                .degrees(isFlipped ? 180 : 0),
+                axis: (x: 0, y: 1, z: 0)
+            )
+            .onTapGesture {
+                withAnimation {
+                    isFlipped.toggle()
+                }
+            }
+            .shadow(radius: 10)
+            .padding()
+            
         }
         .padding()
         .navigationTitle("Kredi Kartı Bilgileri")
     }
-    
-    func cardDetailView(title: String, value: String) -> some View {
-        HStack {
-            Text("\(title): \(value)")
-                .font(.headline)
-            
-            Spacer()
-            
-            Button(action: {
-                UIPasteboard.general.string = value
-            }) {
-                Image(systemName: "doc.on.doc")
-                    .foregroundColor(.blue)
-            }
-        }
-    }
 }
+
 
 #Preview {
     CardDetailsView()

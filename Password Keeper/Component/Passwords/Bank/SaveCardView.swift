@@ -12,14 +12,19 @@ struct SaveCardView: View {
     @State private var cardNumber: String = ""
     @State private var expirationDate: String = ""
     @State private var cvv2: String = ""
+    @State private var cardName: String = ""
     
     @AppStorage("savedIBAN") private var savedIBAN: String = ""
     @AppStorage("savedCardNumber") private var savedCardNumber: String = ""
     @AppStorage("savedExpirationDate") private var savedExpirationDate: String = ""
     @AppStorage("savedCVV2") private var savedCVV2: String = ""
+    @AppStorage("savedCardName") private var savedCardName: String = ""
     
     var body: some View {
         VStack(spacing: 20) {
+            TextField("Card Name", text: $cardName)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
             TextField("IBAN", text: $iban)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
@@ -49,6 +54,7 @@ struct SaveCardView: View {
     }
     
     func saveCardDetails() {
+        savedCardName = cardName
         savedIBAN = iban
         savedCardNumber = cardNumber
         savedExpirationDate = expirationDate
