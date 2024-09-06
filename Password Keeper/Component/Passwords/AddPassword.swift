@@ -14,7 +14,8 @@ struct AddPassword: View {
     @State private var selectedItem: Int? = nil
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     private let userDefaultsManager = PasswordSaveData()
-
+    @State var eyehidden = true
+    
     var body: some View {
         VStack {
             List(0..<items.count, id: \.self) { index in
@@ -30,11 +31,10 @@ struct AddPassword: View {
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.bottom, 5)
                         
-                        SecureField("Password", text: Binding(
+                        TextFields.CustomTextFieldSecure(text: Binding(
                             get: { inputValues[index]?.1 ?? "" },
                             set: { inputValues[index]?.1 = $0 }
-                        ))
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        ), placeHolder: "Password", hidden: $eyehidden)
                     }
                     .padding()
                 } label: {
@@ -83,14 +83,14 @@ struct AddPassword: View {
         }
         .navigationBarBackButtonHidden(true)
     }
-
+    
     private func addItem() {
         let newItemIndex = items.count
         items.append("Item \(newItemIndex + 1)")
         inputValues[newItemIndex] = ("", "")
         selectedItem = newItemIndex
     }
-
+    
     private func saveItem() {
         guard let selectedItem = selectedItem else { return }
         if let name = inputValues[selectedItem]?.0, !name.isEmpty,
@@ -99,7 +99,7 @@ struct AddPassword: View {
             items[selectedItem] = name // Update the item name
         }
     }
-
+    
     private func loadItems() {
         let savedItems = userDefaultsManager.fetchItems()
         for (name, password) in savedItems {
@@ -108,6 +108,9 @@ struct AddPassword: View {
         }
     }
 }
+
+
+
 
 
 
