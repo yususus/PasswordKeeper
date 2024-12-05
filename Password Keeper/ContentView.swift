@@ -24,15 +24,6 @@ struct ContentView: View {
                         NavigationLink(destination: AddPassword()) {
                             Password(text: "Bank", image: "bank")
                         }
-                        
-                        
-                        NavigationLink(destination: CardDetailsView()) {
-                            Text("Kredi Kartı Bilgilerini Görüntüle")
-                                .foregroundColor(.white)
-                                .padding()
-                                .background(Color.green)
-                                .cornerRadius(10)
-                        }
                     }.padding()
                 }
                 
